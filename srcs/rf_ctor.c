@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.c                                           :+:      :+:    :+:   */
+/*   rf_ctor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdeniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/10 16:43:26 by cdeniau           #+#    #+#             */
-/*   Updated: 2019/03/11 18:38:21 by cdeniau          ###   ########.fr       */
+/*   Created: 2019/03/11 18:32:11 by cdeniau           #+#    #+#             */
+/*   Updated: 2019/03/11 18:34:55 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ssl.h>
-// @TODO : remove following include
-#include <stdio.h>
 
-int			main(int ac, char **av)
+void		rf_ctor(t_read_file *this, char *file)
 {
-	t_ssl		ssl;
-	t_read_file	rf;
-
-	if (2 <= ac)
-	{
-		ft_ctor(&ssl);
-		rf_ctor(&rf);
-		ft_run(&rf, &ssl, av);
-		ft_dtor(&ssl);
-	}
+	this->head = NULL;
+	this->tail = NULL;
+	this->error = 0;
+	this->size = 0;
+	if (NULL != file)
+		this->fd = open(file, O_RDONLY);
 	else
-	{
-		ft_putendl("usage: ft_ssl command [command opts] [command args]");
-	}
-	return (0);
+		this->fd = 0;
+	if (-1 == this->fd)
+		this->error = 1;
+	// @TODO : handle error case
 }

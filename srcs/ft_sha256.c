@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fi_ctor.c                                          :+:      :+:    :+:   */
+/*   ft_sha256.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdeniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/10 18:38:52 by cdeniau           #+#    #+#             */
-/*   Updated: 2019/03/10 18:40:31 by cdeniau          ###   ########.fr       */
+/*   Created: 2019/03/11 17:07:52 by cdeniau           #+#    #+#             */
+/*   Updated: 2019/03/11 17:43:31 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ssl.h>
 
-void	fi_ctor(t_ssl *this, char *name)
+void		ft_sha256(char *str)
 {
-	this->str = (char *)malloc(sizeof(char) * ft_strlen(name));
+	ft_putendl(str);
+	write (1, "sha256 !\n", 9);
 }
