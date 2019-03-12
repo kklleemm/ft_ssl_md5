@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fi_dtor.c                                          :+:      :+:    :+:   */
+/*   ft_dtor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdeniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/10 18:39:01 by cdeniau           #+#    #+#             */
-/*   Updated: 2019/03/10 18:39:02 by cdeniau          ###   ########.fr       */
+/*   Created: 2019/03/11 14:55:28 by cdeniau           #+#    #+#             */
+/*   Updated: 2019/03/11 14:55:34 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ssl.h>
 
-void	fi_dtor(t_ssl *this)
+void		ft_dtor(t_ssl *this)
 {
-	int		i;
-
-	i = 0;
-	while (i < 1)
-	{
-		ft_strdel(&(this->str));
-		i += 1;
-	}
+	*this = *this;
+//	ft_strdel(&this->str);
+//	ft_strdel(&this->algo);
 }

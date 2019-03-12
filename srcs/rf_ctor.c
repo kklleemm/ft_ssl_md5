@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fi_ctor.c                                          :+:      :+:    :+:   */
+/*   rf_ctor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdeniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/10 18:38:52 by cdeniau           #+#    #+#             */
-/*   Updated: 2019/03/10 18:40:31 by cdeniau          ###   ########.fr       */
+/*   Created: 2019/03/11 18:32:11 by cdeniau           #+#    #+#             */
+/*   Updated: 2019/03/12 13:40:16 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ssl.h>
 
-void	fi_ctor(t_ssl *this, char *name)
+void		rf_ctor(t_read_file *this, char *file)
 {
-	this->str = (char *)malloc(sizeof(char) * ft_strlen(name));
+	this->head = NULL;
+	this->tail = NULL;
+	this->error = 0;
+	this->size = 0;
+	if (NULL != file)
+		this->fd = open(file, O_RDONLY);
+	else
+		this->fd = 0;
+	if (-1 == this->fd)
+		this->error = 1;
+	// @TODO : handle error case
 }

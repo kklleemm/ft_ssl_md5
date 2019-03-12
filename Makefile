@@ -6,7 +6,7 @@
 #    By: cdeniau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/10 16:31:25 by cdeniau           #+#    #+#              #
-#    Updated: 2019/03/11 09:59:29 by cdeniau          ###   ########.fr        #
+#    Updated: 2019/03/12 16:44:09 by cdeniau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,13 @@ OBJS_DIR	= objs
 SRCS_DIR	= srcs
 INCS_DIR	= incs
 SRCS		= ft_ssl.c					\
-			  fi_ctor.c					\
-			  fi_dtor.c					\
-			  fi_run.c
+			  ft_ctor.c					\
+			  rf_ctor.c					\
+			  rf_push_line.c			\
+			  ft_dtor.c					\
+			  ft_run.c					\
+			  ft_md5.c					\
+			  ft_sha256.c
 OBJS		= $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
 
 .PHONY: all clean fclean re
