@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.c                                           :+:      :+:    :+:   */
+/*   rf_push_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdeniau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/10 16:43:26 by cdeniau           #+#    #+#             */
-/*   Updated: 2019/03/12 13:36:21 by cdeniau          ###   ########.fr       */
+/*   Created: 2019/03/12 13:48:12 by cdeniau           #+#    #+#             */
+/*   Updated: 2019/03/12 16:53:19 by cdeniau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ssl.h>
-// @TODO : remove following include
+// @TODO : remove this
 #include <stdio.h>
 
-int			main(int ac, char **av)
+t_file		*push_line(t_file *f, char *str)
 {
-	t_ssl		ssl;
-	t_read_file	rf;
+	t_file	*head;
 
-	if (2 <= ac)
-	{
-		ft_ctor(&ssl);
-		rf_ctor(&rf, av[ac - 1]);
-		ft_run(&rf, &ssl, av);
-		ft_dtor(&ssl);
-	}
+	head = f;
+	if (NULL == f->line)
+		f->line = ft_strdup(str);
 	else
 	{
-		ft_putendl("usage: ft_ssl command [command opts] [command args]");
+		while (NULL != f->next)
+			f = f->next;
+		if (!(f->next = (t_file *)malloc(sizeof(t_file))))
+			exit(-1);
+		f->next->line = ft_strdup(str);
+//		printf("%s\n", f->next->line);
+		f->next->next = NULL;
 	}
-	return (0);
+	return (head);
 }
